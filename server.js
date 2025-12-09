@@ -7,8 +7,11 @@ const app = express();
 // server.js
 
 // GET /
+// server.js
+
+// GET /
 app.get("/", async (req, res) => {
-  res.send("hello, friend!");
+  res.render("index.ejs");
 });
 
 
