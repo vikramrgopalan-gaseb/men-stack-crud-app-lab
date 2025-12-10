@@ -5,6 +5,7 @@ dotenv.config(); // Loads the environment variables from .env file
 
 const express = require('express');
 const mongoose = require("mongoose");
+const morgan = require('morgan');
 
 const app = express();
 
@@ -17,7 +18,7 @@ mongoose.connection.on("connected", () => {
 
 // Import the Stock model
 const Stock = require("./models/stock.js");
-
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 
 // server.js
@@ -43,10 +44,6 @@ app.get("/stocks/new", (req, res) => {
 // server.js
 
 // POST /stocks
-app.post("/stocks", async (req, res) => {
-  console.log(req.body);
-  res.redirect("/stocks/new");
-});
 
 // server.js
 
@@ -57,7 +54,8 @@ app.post("/stocks", async (req, res) => {
   } else {
     req.body.buy = false;
   }
-  await Stock.create(req.body);
+  const newStock = await Stock.create(req.body);
+  // console.log(newStock)
   res.redirect("/stocks/new");
 });
 
