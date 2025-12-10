@@ -49,11 +49,6 @@ app.get("/stocks/new", (req, res) => {
 
 // POST /stocks
 app.post("/stocks", async (req, res) => {
-  if (req.body.buy === "on") {
-    req.body.buy = true;
-  } else {
-    req.body.buy = false;
-  }
   const newStock = await Stock.create(req.body);
   // console.log(newStock)
   res.redirect("/stocks/new");
