@@ -15,6 +15,8 @@ mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+// Import the Stock model
+const Stock = require("./models/stock.js");
 // server.js
 
 // GET /
