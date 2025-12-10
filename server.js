@@ -49,6 +49,12 @@ app.get("/stocks/new", (req, res) => {
 
 // server.js
 
+app.get("/stocks/:stockId", async (req, res) => {
+  const foundStock = await Stock.findById(req.params.stockId);
+   res.render("stocks/show.ejs", { stock: foundStock });
+});
+
+
 // POST /stocks
 
 // server.js
