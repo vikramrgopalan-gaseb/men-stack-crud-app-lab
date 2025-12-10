@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= stock.name %></title>
+  </head>
+  <body>
+    <h1><%= stock.name %></h1>
+    <% if (stock.buy) { %>
+    <p>This stock is ready to buy!</p>
+  <% } else { %>
+    <p>This stock is not ready to buy!</p>
+  <% } %>
+  <a href="/stocks/">Back to Stocks</a>
+  </body>
+</html>
+
