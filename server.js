@@ -48,6 +48,20 @@ app.post("/stocks", async (req, res) => {
   res.redirect("/stocks/new");
 });
 
+// server.js
+
+// POST /stocks
+app.post("/stocks", async (req, res) => {
+  if (req.body.buy === "on") {
+    req.body.buy = true;
+  } else {
+    req.body.buy = false;
+  }
+  await Stock.create(req.body);
+  res.redirect("/stocks/new");
+});
+
+
 app.listen(3000, () => {
   console.log('Listening on port 3000');
 });
