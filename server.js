@@ -32,6 +32,12 @@ app.get("/", async (req, res) => {
 });
 
 // server.js
+// GET /stocks
+app.get("/stocks", async (req, res) => {
+  const allStocks = await Stock.find();
+  // console.log(allStocks);
+  res.render("stocks/index.ejs", { stocks: allStocks });
+});
 
 // GET /stocks/new
 // server.js
@@ -51,7 +57,7 @@ app.get("/stocks/new", (req, res) => {
 app.post("/stocks", async (req, res) => {
   const newStock = await Stock.create(req.body);
   // console.log(newStock)
-  res.redirect("/stocks/new");
+   res.redirect("/stocks");
 });
 
 

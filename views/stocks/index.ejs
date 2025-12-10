@@ -1,0 +1,19 @@
+<!-- views/stocks/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stocks Index</title>
+  </head>
+  <body>
+    <h1>All Stocks</h1>
+     <ul>
+    <% stocks.forEach(stock => { %>
+      <li><%= stock.name %></li>
+    <% }); %>
+  </ul>
+    <a href="/stocks/new">Add New Stock</a>
+  </body>
+</html>
