@@ -9,5 +9,17 @@
   </head>
   <body>
     <h1>Pick a New Stock!</h1>
+    <form action="/stocks" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+
+        <label for="buy">Buy?</label>
+        <input type="checkbox" name="Buy?" id="buy" />
+        <button type="submit">Add Stock</button>
+
+        <label for="sell">Sell?</label>
+        <input type="checkbox" name="Sell?" id="sell" />
+        <button type="submit">Remove Stock</button>
+    </form>
   </body>
 </html>

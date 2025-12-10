@@ -17,6 +17,9 @@ mongoose.connection.on("connected", () => {
 
 // Import the Stock model
 const Stock = require("./models/stock.js");
+
+app.use(express.urlencoded({ extended: false }));
+
 // server.js
 
 // GET /
@@ -33,12 +36,19 @@ app.get("/", async (req, res) => {
 // server.js
 
 // GET /stocks/new
-app.get("/fruits/new", (req, res) => {
-  res.render("fruits/new.ejs");
+app.get("/stocks/new", (req, res) => {
+  res.render("stocks/new.ejs");
 });
 
+// server.js
 
+// POST /stocks
+app.post("/stocks", async (req, res) => {
+  console.log(req.body);
+  res.redirect("/stocks/new");
+});
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');
 });
+
