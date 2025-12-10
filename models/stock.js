@@ -6,7 +6,8 @@ const stockSchema = new mongoose.Schema({
     name: String,
     ticker: String,
     price: Number,
-    buyOrSell: Boolean,
+    buy: Boolean,
+    sell: Boolean,
 });
 
 const Stock = mongoose.model("Stock", stockSchema); // create model
