@@ -11,7 +11,7 @@
     <h1>All Stocks</h1>
      <ul>
     <% stocks.forEach(stock => { %>
-      <li><a href="#"><%= stock._id %></a></li>
+      <li><a href="/stocks/<%=stock._id%>"><%= stock.name %></a></li>
     <% }); %>
   </ul>
     <a href="/stocks/new">Add New Stock</a>

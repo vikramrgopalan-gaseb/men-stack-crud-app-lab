@@ -7,15 +7,10 @@
   </head>
   <body>
     <h1><%= stock.name %></h1>
-    <% if (stock.buy) { %>
-    <p>This stock is ready to buy!</p>
-  <% } else { %>
-    <p>This stock is not ready to buy!</p>
-  <% } %>
   <form action="/stocks/<%=stock._id%>?_method=DELETE" method="POST">
   <button type="submit">Delete <%= stock.name %></button>
 </form>
-  <a href="/stocks/<%= stock._id %>/edit">Edit <%= fruit.name %></a>
+  <a href="/stocks/<%= stock._id %>/edit">Edit <%= stock.name %></a>
   <a href="/stocks">Back to Stocks</a>
   </body>
 </html>

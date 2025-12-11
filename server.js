@@ -95,7 +95,7 @@ app.put("/stocks/:stockId", async (req, res) => {
   // Update the stock in the database
   await Stock.findByIdAndUpdate(req.params.stockId, req.body);
 
-  // Redirect to the fruit's show page to see the updates
+  // Redirect to the stock's show page to see the updates
   res.redirect(`/stocks/${req.params.stockId}`);
 });
 
