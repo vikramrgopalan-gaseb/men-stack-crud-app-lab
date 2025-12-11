@@ -82,6 +82,23 @@ app.get("/stocks/:stockId/edit", async (req, res) => {
   });
 });
 
+// server.js
+
+app.put("/stocks/:stockId", async (req, res) => {
+  // Handle the 'buy' checkbox data
+  if (req.body.buy === "on") {
+    req.body.buy = true;
+  } else {
+    req.body.buy = false;
+  }
+  
+  // Update the stock in the database
+  await Stock.findByIdAndUpdate(req.params.stockId, req.body);
+
+  // Redirect to the fruit's show page to see the updates
+  res.redirect(`/stocks/${req.params.stockId}`);
+});
+
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');
