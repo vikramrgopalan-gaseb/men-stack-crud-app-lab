@@ -6,6 +6,7 @@ dotenv.config(); // Loads the environment variables from .env file
 const express = require('express');
 const mongoose = require("mongoose");
 const morgan = require('morgan');
+const methodOverride = require("method-override");
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose.connection.on("connected", () => {
 const Stock = require("./models/stock.js");
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 
 // server.js
 
@@ -64,6 +66,12 @@ app.post("/stocks", async (req, res) => {
   const newStock = await Stock.create(req.body);
   // console.log(newStock)
    res.redirect("/stocks");
+});
+
+
+app.delete("/stocks/:stockId", async (req, res) => {
+  await Stock.findByIdAndDelete(req.params.stockId);
+  res.redirect("/stocks");
 });
 
 

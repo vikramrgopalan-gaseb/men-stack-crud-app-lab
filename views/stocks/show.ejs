@@ -12,7 +12,10 @@
   <% } else { %>
     <p>This stock is not ready to buy!</p>
   <% } %>
-  <a href="/stocks/">Back to Stocks</a>
+  <form action="/stocks/<%=stock._id%>?_method=DELETE" method="POST">
+  <button type="submit">Delete <%= stock.name %></button>
+</form>
+  <a href="/stocks">Back to Stocks</a>
   </body>
 </html>
 
