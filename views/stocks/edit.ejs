@@ -1,0 +1,15 @@
+<body>
+  <!-- update the header -->
+  <h1>Edit <%= stock.name %></h1>
+  <form action="/stocks/<%=stock._id%>?_method=PUT" method="POST"></form>
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= fruit.name %>" />
+
+    <label for="buy">Buy?</label>
+    <input type="checkbox" name="buy" <% if (stock.buy) { %>checked<% } %> />
+    <!-- update the button text -->
+    <button type="submit">Update Stock</button>
+  </form>
+  <a href="/stocks">Back to Stocks</a>
+</body>
+

@@ -15,6 +15,7 @@
   <form action="/stocks/<%=stock._id%>?_method=DELETE" method="POST">
   <button type="submit">Delete <%= stock.name %></button>
 </form>
+  <a href="/stocks/<%= stock._id %>/edit">Edit <%= fruit.name %></a>
   <a href="/stocks">Back to Stocks</a>
   </body>
 </html>

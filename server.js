@@ -75,6 +75,14 @@ app.delete("/stocks/:stockId", async (req, res) => {
 });
 
 
+app.get("/stocks/:stockId/edit", async (req, res) => {
+  const foundStock = await Stock.findById(req.params.stockId);
+   res.render("stocks/edit.ejs", {
+    stock: foundStock,
+  });
+});
+
+
 app.listen(3000, () => {
   console.log('Listening on port 3000');
 });
