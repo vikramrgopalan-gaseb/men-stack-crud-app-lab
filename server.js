@@ -10,6 +10,8 @@ const methodOverride = require("method-override");
 
 const app = express();
 
+const port = process.env.PORT ? process.env.PORT : "3000";
+
 // Connect to MongoDB using the connection string in the .env file
 mongoose.connect(process.env.MONGODB_URI);
 
