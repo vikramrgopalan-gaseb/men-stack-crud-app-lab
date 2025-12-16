@@ -12,6 +12,8 @@ const app = express();
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
+const authController = require("./controllers/auth.js");
+
 // Connect to MongoDB using the connection string in the .env file
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -34,6 +36,8 @@ app.use(methodOverride("_method"));
 app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
+
+app.use("/auth", authController);
 
 // server.js
 // GET /stocks
