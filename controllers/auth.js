@@ -37,6 +37,32 @@ router.get("/sign-in", (req, res) => {
   res.render("auth/sign-in.ejs");
 });
 
+req.session.user = {
+  username: userInDatabase.username,
+};
+
+req.session.save(() => {
+  res.redirect("/");
+});
+
+req.session.destroy(() => {
+  res.redirect("/");
+});
+
+
 router.post("/sign-in", async (req, res) => {
   res.send("Request to sign in received!");
 });
+
+const userInDatabase = await User.findOne({ username: req.body.username });
+if (!userInDatabase) {
+  return res.send("Login failed. Please try again.");
+}
+
+const validPassword = bcrypt.compareSync(
+  req.body.password,
+  userInDatabase.password
+);
+if (!validPassword) {
+  return res.send("Login failed. Please try again.");
+}

@@ -7,6 +7,9 @@ const express = require('express');
 const mongoose = require("mongoose");
 const morgan = require('morgan');
 const methodOverride = require("method-override");
+const MongoStore = require("connect-mongo");
+const session = require('express-session');
+
 
 const app = express();
 
@@ -27,6 +30,19 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+  })
+);
+
+
+
 // server.js
 
 // GET /
@@ -35,6 +51,12 @@ app.use(methodOverride("_method"));
 // GET /
 app.get("/", async (req, res) => {
   res.render("index.ejs");
+});
+
+app.get("/", (req, res) => {
+  res.render("index.ejs", {
+    user: req.session.user,
+  });
 });
 
 app.use("/auth", authController);
