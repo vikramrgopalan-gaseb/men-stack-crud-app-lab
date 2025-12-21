@@ -49,9 +49,9 @@ app.use(
 // server.js
 
 // GET /
-app.get("/", async (req, res) => {
+/* app.get("/", async (req, res) => {
   res.render("index.ejs");
-});
+}); */ 
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
