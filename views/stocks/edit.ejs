@@ -4,10 +4,6 @@
   <form action="/stocks/<%=stock._id%>?_method=PUT" method="POST">
     <label for="name">Name:</label>
     <input type="text" name="name" value="<%= stock.name %>" />
-
-    <!-- <label for="buy">Buy?</label>
-    <input type="checkbox" name="buy" <% if (stock.buy) { %>checked<% } %> /> -->
-    <!-- update the button text -->
     <button type="submit">Update Stock</button>
   </form>
   <a href="/stocks">Back to Stocks</a>

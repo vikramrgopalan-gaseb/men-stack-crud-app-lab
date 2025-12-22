@@ -48,11 +48,6 @@ app.use(
 // GET /
 // server.js
 
-// GET /
-/* app.get("/", async (req, res) => {
-  res.render("index.ejs");
-}); */ 
-
 app.get("/", (req, res) => {
   res.render("index.ejs", {
     user: req.session.user,
@@ -65,7 +60,6 @@ app.use("/auth", authController);
 // GET /stocks
 app.get("/stocks", async (req, res) => {
   const allStocks = await Stock.find();
-  // console.log(allStocks);
   res.render("stocks/index.ejs", { stocks: allStocks });
 });
 
@@ -92,7 +86,6 @@ app.get("/stocks/:stockId", async (req, res) => {
 // POST /stocks
 app.post("/stocks", async (req, res) => {
   const newStock = await Stock.create(req.body);
-  // console.log(newStock)
    res.redirect("/stocks");
 });
 
@@ -113,7 +106,6 @@ app.get("/stocks/:stockId/edit", async (req, res) => {
 // server.js
 
 app.put("/stocks/:stockId", async (req, res) => {
-  // Handle the 'buy' checkbox data
   if (req.body.buy === "on") {
     req.body.buy = true;
   } else {
