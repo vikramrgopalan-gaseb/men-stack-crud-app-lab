@@ -37,15 +37,6 @@ router.get("/sign-in", (req, res) => {
   res.render("auth/sign-in.ejs");
 });
 
-
-
-
-// encapsulate the below in a sign out route
-// req.session.destroy(() => {
-  // res.redirect("/");
-// });
-
-
 router.post("/sign-in", async (req, res) => {
   const userInDatabase = await User.findOne({ username: req.body.username });
   if (!userInDatabase) {
@@ -64,3 +55,14 @@ router.post("/sign-in", async (req, res) => {
   res.redirect("/");
 });
 });
+
+/* router.get("/sign-out", (req, res) => {
+  res.render("index.ejs");
+}); */
+
+router.get("/sign-out", async (req, res) => {
+  req.session.destroy()
+  res.redirect("/");
+ // return res.send("Signed Out. Thank you!");
+ // });
+}); 
